@@ -1,1 +1,4 @@
-Ubicacion de funcionalidades o pasos a seguir para probar las cosas
+# Ubicacion de funcionalidades 
+
+
+# Pasos a seguir para probar las cosas
