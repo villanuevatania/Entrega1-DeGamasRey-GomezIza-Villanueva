@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'bandas',
+    'bandas'
 ]
 
 MIDDLEWARE = [
@@ -55,7 +55,7 @@ ROOT_URLCONF = 'Blog.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [r'C:\Users\Tania\OneDrive\Escritorio\trabajo final\Entrega1-DeGamasRey-GomezIza-Villanueva\templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

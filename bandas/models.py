@@ -1,13 +1,8 @@
 from django.db import models
 
-# Create your models here.
-
-from django.db import models
-
-# Create your models here.
 class Banda(models.Model):
-    nombre = models.CharField(max_length=30)
-    genero = models.CharField(max_lenght=30)
+    nombre = models.CharField(max_length=250)
+    genero = models.CharField(max_length=250)
     anios_activa = models.IntegerField()
     
     
