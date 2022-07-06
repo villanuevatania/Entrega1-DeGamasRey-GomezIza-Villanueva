@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Crear banda</title>
+{% endblock title %}
+
+
+{% block texto_header %}
+<h1>
+    Creacion de banda
+</h1>
+{% endblock texto_header %}
+{% block texto_2 %}
+{% endblock texto_2 %}
+
+{% block dsp_del_header %}
+
+
+    <h1>Este es el listado de bandas:</h1>
+    <p>
+        <form action="" method="post">
+            <p>
+                Nombre de la banda:
+                <input type="text" name='nombre'>
+            </p>
+            <p>
+                Genero:
+                <input type="text" name='genero'>
+            </p>
+            <p>
+                Anios activa:
+                <input type="number" name='anios_activa'>
+            </p>
+            <button>Crear</button>
+        </form>
+    </p>
+            
+            
+    
+{% endblock dsp_del_header %}
+

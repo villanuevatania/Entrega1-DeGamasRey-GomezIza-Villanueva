@@ -8,16 +8,16 @@
 <header class="masthead">
     <div class="container">
         <div class="masthead-subheading">
-            {% block texto_1 %}
+            {% block texto_header %}
             Bienvenido a Comunidad DO RE MI!
-            {% endblock texto_1 %}
+            {% endblock texto_header %}
         </div>
         <div class="masthead-heading text-uppercase">
             {% block texto_2 %}
             Toda la informacion de tus bandas favoritas!
             {% endblock texto_2 %}
         </div>
-        <a class="btn btn-primary btn-xl text-uppercase" href={% url 'bandas' %}>¡Vamos allá!</a>
+        <a class="btn btn-primary btn-xl text-uppercase" href={% url 'crear_banda' %}>¡Vamos allá!</a>
     </div>
 </header>
 {% endblock header %}

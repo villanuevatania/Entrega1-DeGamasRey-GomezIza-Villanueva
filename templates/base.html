@@ -29,7 +29,7 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase bg-dark ms-auto py-4 py-lg-0">
                         <li class="nav-item"><a class="nav-link" href={% url 'home' %}>Inicio</a></li>
-                        <li class="nav-item"><a class="nav-link" href={% url 'bandas' %}>Bandas</a></li>
+                        <li class="nav-item"><a class="nav-link" href={% url 'crear_banda' %}>Bandas</a></li>
                         <li class="nav-item"><a class="nav-link" href={% url 'about' %}>Acerca de nosotros</a></li>
                     </ul>
                 </div>
@@ -37,8 +37,8 @@
         </nav>
         {% block header %}
 
-        {% comment %} {% block texto_1 %}
-        {% endblock texto_1 %} {% endcomment %}
+        {% comment %} {% block texto_header %}
+        {% endblock texto_header %} {% endcomment %}
         
         {% block texto_2 %}
         {% endblock texto_2 %}
