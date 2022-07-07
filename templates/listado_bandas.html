@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Listado bandas</title>
+{% endblock title %}
+
+
+{% block texto_header %}
+<h1>
+    Listado de bandas
+</h1>
+{% endblock texto_header %}
+{% block texto_2 %}
+{% endblock texto_2 %}
+
+{% block dsp_del_header %}
+<p>
+    <a href={% url 'crear_banda' %}>Crear banda</a>
+</p>
+
+
+<p>
+    <ul>
+        {% for banda in listado_bandas %}
+        <li>{{banda}}</li>
+        {% endfor %}
+    </ul>
+</p>
+
+            
+            
+    
+{% endblock dsp_del_header %}

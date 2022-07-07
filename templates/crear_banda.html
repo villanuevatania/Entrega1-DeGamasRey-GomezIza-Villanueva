@@ -16,24 +16,17 @@
 {% block dsp_del_header %}
 
 
-    <h1>Este es el listado de bandas:</h1>
-    <p>
-        <form action="" method="post">
-            <p>
-                Nombre de la banda:
-                <input type="text" name='nombre'>
-            </p>
-            <p>
-                Genero:
-                <input type="text" name='genero'>
-            </p>
-            <p>
-                Anios activa:
-                <input type="number" name='anios_activa'>
-            </p>
+<p>
+        <h1>Creacion de bandas:</h1>
+        <form action="{% url 'crear_banda' %}" method="post">
+            {% csrf_token %}
+            <table>
+                {{form.as_table}}
+            </table>
             <button>Crear</button>
         </form>
     </p>
+
             
             
     

@@ -1,6 +1,8 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.template import loader
+
+from .forms import FormBanda
 from .models import Banda
 
 # Create your views here.
@@ -9,17 +11,37 @@ def home(request):
     
 def crear_banda(request):
   
-  # print(request.GET)
+
+  if request.method == 'POST':
+    form = FormBanda(request.POST)
+    
+    if form.is_valid():
+      data = form.cleaned_data
+      
+      banda = Banda(
+        nombre=data.get('nombre'),
+        genero=data.get('genero'),
+        anios_activa=data.get('anios_activa')
+      )
+      banda.save()
+      
+      listado_bandas = Banda.objects.all()
+      
+      return render(request, 'listado_bandas.html', {'listado_bandas': listado_bandas})
+    
+    else:
+      return render(request, 'crear_banda.html', {'form': form})
   
-  nombre = request.POST.get('nombre')
-  genero = request.POST.get('genero')
-  anios_activa = request.POST.get('anios_activa')
-  
-  banda = Banda(nombre=nombre, genero=genero, anios_activa=anios_activa)
-  banda.save()
+  form_banda = FormBanda()
   
   
-  return render(request, 'crear_banda.html', {'banda': banda})
+  return render(request, 'crear_banda.html', {'form': form_banda})
+
+def listado_bandas(request):
+  listado_bandas = Banda.objects.all()
+  return render(request, 'listado_bandas.html', {'listado_bandas': listado_bandas})
+      
+  
 
 def about(request):
     return HttpResponse ('<h1> Comunidad DO RE MI fue creado con la finalidad de que puedas cargar una reseña sobre tu/s banda/s, difundir tus shows, conocer nuevas bandas e intercambiar opiniones con otros músicos y/o melómanos.<h1>'
