@@ -19,24 +19,23 @@
 </p>
 
 </p>
-    <form action = [% url 'listado_bandas'%]>
+    <form action = {% url 'listado_bandas'%}>
         {{form}}
         <button>Buscar<button>
     </form>
 </p>
 
 <p>
-    {%if listado_bandas %}
+    {% if listado_bandas %}
     <ul>
         {% for banda in listado_bandas %}
-        <li>{{banda}}</li>
+        <li>
+            {{banda}}
+        </li>
         {% endfor %}
     </ul>
-    No se encontraron datos
+    {% else %}
+    No se encontraron datos.
     {% endif %}
 </p>
-
-            
-            
-    
 {% endblock dsp_del_header %}
