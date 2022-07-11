@@ -26,11 +26,14 @@
 </p>
 
 <p>
+    {%if listado_bandas %}
     <ul>
         {% for banda in listado_bandas %}
         <li>{{banda}}</li>
         {% endfor %}
     </ul>
+    No se encontraron datos
+    {% endif %}
 </p>
 
             
