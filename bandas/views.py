@@ -1,7 +1,7 @@
 from django import forms
 from django.http import HttpResponse
-from django.shortcuts import render
 from django.template import loader
+from django.shortcuts import redirect, render
 
 from .forms import BusquedaBanda, FormBanda
 from .models import Banda

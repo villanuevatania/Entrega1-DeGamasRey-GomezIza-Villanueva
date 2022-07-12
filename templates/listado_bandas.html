@@ -20,7 +20,7 @@
 
 </p>
     <form action = {% url 'listado_bandas'%}>
-        {{form}}
+        {{form.as_table}}
         <button>Buscar<button>
     </form>
 </p>
@@ -29,7 +29,7 @@
     {% if listado_bandas %}
     <ul>
         {% for banda in listado_bandas %}
-        <li>
+        <li> 
             {{banda}}
         </li>
         {% endfor %}
