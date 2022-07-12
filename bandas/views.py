@@ -54,3 +54,26 @@ def listado_bandas(request):
 def about(request):
     return HttpResponse ('<h1> Comunidad DO RE MI fue creado con la finalidad de que puedas cargar una reseña sobre tu/s banda/s, difundir tus shows, conocer nuevas bandas e intercambiar opiniones con otros músicos y/o melómanos.<h1>'
 		'<h1>¡Bienvenido a esta plataforma!<h1>')
+    
+def buscar(request):
+
+    var2 = Banda.objects.all()
+    contexto = { "todos" : var2 }
+
+    if request.GET:
+
+        var = request.GET["buscar"]
+
+        buscador = Banda.objects.filter(nombre__icontains = var)
+
+        contexto = { "buscados" : buscador , "todos" : var2 }
+
+        plantilla = loader.get_template("buscador.html")
+        documento = plantilla.render( contexto )
+        
+        return HttpResponse( documento )
+    
+    plantilla = loader.get_template("buscador.html")
+    documento = plantilla.render( contexto )
+    
+    return HttpResponse( documento )
