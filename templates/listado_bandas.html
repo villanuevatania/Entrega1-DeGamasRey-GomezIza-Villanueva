@@ -4,36 +4,31 @@
 <title>Listado bandas</title>
 {% endblock title %}
 
-{% block texto_2 %}
-{% endblock texto_2 %}
-
-{% block footer %}
-{% endblock footer %}
-
 {% block dsp_del_header %}
+
 <h1>
     Listado de bandas:
 </h1>
 
-</p>
-    <form action = {% url 'listado_bandas'%}>
-        {{form.as_table}}
-        <button>Buscar<button>
-    </form>
-</p>
+<hr>
 
-<p>
+    <div>
+        <form action = {% url 'listado_bandas'%}>
+            {{form.as_table}}
+            <button>Buscar<button>
+        </form>
+    </div>
+
+<div>
     {% if listado_bandas %}
         {% for banda in listado_bandas %}
-        <tr>
             <li>
                 {{banda}}
             </li>
-        </tr>
         {% endfor %}
     {% else %}
     No se encontraron datos.
     {% endif %}
-</p>
+</div>
 
 {% endblock dsp_del_header %}
