@@ -46,8 +46,9 @@ def listado_bandas(request):
     listado_bandas = Banda.objects.filter(banda__icontains = nombre_de_busqueda)
   else:
     listado_bandas = Banda.objects.all()
-    form = BusquedaBanda()
+    
   
+  form = BusquedaBanda()
   return render(request, 'listado_bandas.html', {'listado_bandas': listado_bandas, 'form':form})
 
 

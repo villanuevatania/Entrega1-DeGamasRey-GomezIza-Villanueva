@@ -6,4 +6,4 @@ class FormBanda(forms.Form):
     anios_activa = forms.IntegerField(required=False)
 
 class BusquedaBanda (forms.Form):
-    nombre = forms.CharField(max_length=30, required = False)
+    nombre = forms.CharField(max_length=30, required=False)
