@@ -4,19 +4,16 @@
 <title>Listado bandas</title>
 {% endblock title %}
 
-
-{% block texto_header %}
-<h1>
-    Listado de bandas
-</h1>
-{% endblock texto_header %}
 {% block texto_2 %}
 {% endblock texto_2 %}
 
+{% block footer %}
+{% endblock footer %}
+
 {% block dsp_del_header %}
-<p>
-    <a href={% url 'crear_banda' %}>Crear banda</a>
-</p>
+<h1>
+    Listado de bandas:
+</h1>
 
 </p>
     <form action = {% url 'listado_bandas'%}>
@@ -27,15 +24,16 @@
 
 <p>
     {% if listado_bandas %}
-    <ul>
         {% for banda in listado_bandas %}
-        <li> 
-            {{banda}}
-        </li>
+        <tr>
+            <li>
+                {{banda}}
+            </li>
+        </tr>
         {% endfor %}
-    </ul>
     {% else %}
     No se encontraron datos.
     {% endif %}
 </p>
+
 {% endblock dsp_del_header %}

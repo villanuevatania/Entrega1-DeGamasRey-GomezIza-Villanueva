@@ -56,7 +56,6 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [r'C:\Users\Vasco\Desktop\Proyectos\Entrega1-DeGamasRey-GomezIza-Villanueva\templates'],        'APP_DIRS': True,
-        'DIRS': [r'C:\Users\Tania\OneDrive\Escritorio\trabajo final\Entrega1-DeGamasRey-GomezIza-Villanueva\templates'],        'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',

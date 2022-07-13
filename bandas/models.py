@@ -7,4 +7,4 @@ class Banda(models.Model):
     
     
     def __str__ (self):
-        return f'El nombre del artista es {self.nombre}, pertenece al palo del {self.genero} y está en actividad desde {self.anios_activa}'
+        return f'El nombre del artista es {self.nombre}, pertenece al palo del {self.genero} y está en actividad desde hace {self.anios_activa} años'
