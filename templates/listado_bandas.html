@@ -13,21 +13,27 @@
 <hr>
 
     <div>
-        <form action = {% url 'listado_bandas'%}>
-            {{form.as_table}}
-            <button>Buscar<button>
+        <form action="/bandas/buscar/" method= "GET">
+            <input type="text" name = "buscar">
+            <input type="submit" value="Buscar">
         </form>
     </div>
 
 <div>
-    {% if listado_bandas %}
-        {% for banda in listado_bandas %}
+    {% if banda %}
+        {% for x in banda %}
             <li>
-                {{banda}}
+                El nombre de la banda es {{x.nombre}}, pertenece al palo del {{x.genero}} y esta en actividad desde hace {{x.anios_activa}} años.
             </li>
         {% endfor %}
+    {% elif listado_bandas %}
+            {% for x in listado_bandas %}
+            <li>
+                El nombre de la banda es {{x.nombre}}, pertenece al palo del {{x.genero}} y esta en actividad desde hace {{x.anios_activa}} años.
+            </li>
+            {% endfor %}
     {% else %}
-    No se encontraron datos.
+    {{respuesta}}
     {% endif %}
 </div>
 

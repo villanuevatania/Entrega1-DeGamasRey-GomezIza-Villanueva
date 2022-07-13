@@ -1,4 +1,5 @@
 from django.urls import path
+from bandas import views
 from .views import home, crear_banda, about, listado_bandas, buscar
 
 urlpatterns = [
@@ -6,5 +7,5 @@ urlpatterns = [
     path('listado-bandas/', listado_bandas, name='listado_bandas'),
     path('home', about, name='about'),
     path('', home, name='home'),
-    path('buscador/', buscar),
+    path('buscar/', buscar, name='buscador'),
 ]

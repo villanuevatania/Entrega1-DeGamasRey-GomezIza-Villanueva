@@ -39,17 +39,17 @@ def crear_banda(request):
   return render(request, 'crear_banda.html', {'form': form_banda})
 
 def listado_bandas(request):
-  
-  nombre_de_busqueda = request.GET.get('banda')
-  
-  if nombre_de_busqueda:
-    listado_bandas = Banda.objects.filter(banda__icontains = nombre_de_busqueda)
-  else:
     listado_bandas = Banda.objects.all()
+  
+  # nombre_de_busqueda = request.GET.get('buscador')
+  
+  # if nombre_de_busqueda:
+  #   listado_bandas = Banda.objects.filter(banda__icontains = nombre_de_busqueda)
+  # else:
     
   
-  form = BusquedaBanda()
-  return render(request, 'listado_bandas.html', {'listado_bandas': listado_bandas, 'form':form})
+    form = BusquedaBanda()
+    return render(request, 'listado_bandas.html', {'listado_bandas': listado_bandas, 'form':form})
 
 
 def about(request):
@@ -57,24 +57,15 @@ def about(request):
 		'<h1>¡Bienvenido a esta plataforma!<h1>')
     
 def buscar(request):
-
-    var2 = Banda.objects.all()
-    contexto = { "todos" : var2 }
-
-    if request.GET:
-
-        var = request.GET["buscar"]
-
-        buscador = Banda.objects.filter(nombre__icontains = var)
-
-        contexto = { "buscados" : buscador , "todos" : var2 }
-
-        plantilla = loader.get_template("buscador.html")
-        documento = plantilla.render( contexto )
-        
-        return HttpResponse( documento )
+  if request.GET["buscar"]:
+    var = request.GET["buscar"]
+    banda = Banda.objects.filter(nombre__icontains = var)
+    return render(request, 'listado_bandas.html', {'banda': banda})
+    # if banda.exists():
+    # else:
+    #   respuesta = 'No existen datos cargados con esa letra.'
+    # return render(request, 'listado_bandas.html', {'respuesta': respuesta})
+  else:
+    respuesta = 'Debe llenar algun campo.'
+    return render(request, 'listado_bandas.html', {'respuesta': respuesta})
     
-    plantilla = loader.get_template("buscador.html")
-    documento = plantilla.render( contexto )
-    
-    return HttpResponse( documento )
