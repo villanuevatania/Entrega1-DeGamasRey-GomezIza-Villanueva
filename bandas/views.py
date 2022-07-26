@@ -1,10 +1,12 @@
 from django import forms
 from django.http import HttpResponse
-from django.template import loader
 from django.shortcuts import redirect, render
-
 from .forms import BusquedaBanda, FormBanda
 from .models import Banda
+from django.views.generic.list import ListView
+from django.views.generic.edit import DeleteView, UpdateView, CreateView
+from django.views.generic import DetailView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
 def home(request):
@@ -12,7 +14,6 @@ def home(request):
     
 def crear_banda(request):
   
-
   if request.method == 'POST':
     form = FormBanda(request.POST)
     
@@ -28,15 +29,15 @@ def crear_banda(request):
       
       listado_bandas = Banda.objects.all()
       
-      return render(request, 'listado_bandas.html', {'listado_bandas': listado_bandas})
+      return render(request, 'bandas/listado_bandas.html', {'listado_bandas': listado_bandas})
     
     else:
-      return render(request, 'crear_banda.html', {'form': form})
+      return render(request, 'bandas/crear_banda.html', {'form': form})
   
   form_banda = FormBanda()
   
   
-  return render(request, 'crear_banda.html', {'form': form_banda})
+  return render(request, 'bandas/crear_banda.html', {'form': form_banda})
 
 def listado_bandas(request):
     listado_bandas = Banda.objects.all()
@@ -49,7 +50,7 @@ def listado_bandas(request):
     
   
     form = BusquedaBanda()
-    return render(request, 'listado_bandas.html', {'listado_bandas': listado_bandas, 'form':form})
+    return render(request, 'bandas/listado_bandas.html', {'listado_bandas': listado_bandas, 'form':form})
 
 
 def about(request):
@@ -60,12 +61,27 @@ def buscar(request):
   if request.GET["buscar"]:
     var = request.GET["buscar"]
     banda = Banda.objects.filter(nombre__icontains = var)
-    return render(request, 'listado_bandas.html', {'banda': banda})
+    return render(request, 'bandas/listado_bandas.html', {'banda': banda})
     # if banda.exists():
     # else:
     #   respuesta = 'No existen datos cargados con esa letra.'
     # return render(request, 'listado_bandas.html', {'respuesta': respuesta})
   else:
     respuesta = 'Debe llenar algun campo.'
-    return render(request, 'listado_bandas.html', {'respuesta': respuesta})
+    return render(request, 'bandas/listado_bandas.html', {'respuesta': respuesta})
     
+class EditarBanda(LoginRequiredMixin, UpdateView):
+    model=Banda
+    template_name = 'bandas/banda.html'
+    success_url = '/bandas/banda'
+    fields = ['nombre', 'genero', 'anios_activa']
+
+
+def eliminar_bandas(LoginRequiredMixin, DeleteView):
+  banda = Banda.objects.get(id=id)
+  banda.delete()
+  return redirect('listado_bandas')
+
+def mostrar_bandas(request, id):
+  banda = Banda.objects.get(id=id)
+  return render(request, 'bandas/mostrar_bandas.html', {'banda': banda})
