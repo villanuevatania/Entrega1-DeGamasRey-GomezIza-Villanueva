@@ -70,7 +70,7 @@ def buscar(request):
     respuesta = 'Debe llenar algun campo.'
     return render(request, 'bandas/listado_bandas.html', {'respuesta': respuesta})
     
-class EditarBanda(LoginRequiredMixin, UpdateView):
+def editar_bandas (LoginRequiredMixin, UpdateView):
     model=Banda
     template_name = 'bandas/banda.html'
     success_url = '/bandas/banda'
