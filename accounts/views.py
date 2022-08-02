@@ -15,7 +15,7 @@ def login(request):
             
             if usuario is not None:
                 django_login(request, usuario)
-                return redirect('index')
+                return redirect('index.html')
             else:
                 return render(request, 'accounts/login.html', {'form': form})
         else:

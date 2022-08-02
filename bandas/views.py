@@ -1,4 +1,5 @@
 from django import forms
+from django.template import loader
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from .forms import BusquedaBanda, FormBanda
@@ -54,9 +55,9 @@ def listado_bandas(request):
 
 
 def about(request):
-    return HttpResponse ('<h1> Comunidad DO RE MI fue creado con la finalidad de que puedas cargar una reseña sobre tu/s banda/s, difundir tus shows, conocer nuevas bandas e intercambiar opiniones con otros músicos y/o melómanos.<h1>'
-		'<h1>¡Bienvenido a esta plataforma!<h1>')
-    
+  
+      return render(request, 'bandas/about.html')
+
 def buscar(request):
   if request.GET["buscar"]:
     var = request.GET["buscar"]
