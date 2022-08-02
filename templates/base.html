@@ -32,8 +32,13 @@
                         <li class="nav-item"><a class="nav-link" href="{% url 'crear_banda' %}">Bandas</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'listado_bandas' %}">Listado de bandas</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">Acerca de nosotros</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Iniciar sesión</a></li>
+                        {% if request.user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link" href="{% url '#' %}">{{request.user.username}}</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Cerrar sesión</a></li>
+                        {% else %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Registrate</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Iniciar sesión</a></li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>
