@@ -64,9 +64,6 @@ def editar_perfil(request):
             user.email = data.get('email') if data.get('email') else user.email
             mas_datos_usuario.avatar = data.get('avatar') if data.get('avatar') else mas_datos_usuario.avatar
                 
-            if data.get('password1') and data.get('password1') == data.get('password2'):
-                user.set_password(data.get('password1'))
-                
             mas_datos_usuario.save()
             user.save()
             
@@ -85,3 +82,7 @@ def editar_perfil(request):
     )
         
     return render(request, 'accounts/editar_perfil.html', {'form': form})
+
+class ChangePasswordView(PasswordChangeView):
+    template_name = 'accounts/cambio_password.html'
+    success_url = '/accounts/perfil/'
