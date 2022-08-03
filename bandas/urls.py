@@ -8,7 +8,6 @@ urlpatterns = [
     path('listado-bandas/', listado_bandas, name='listado_bandas'),
     path('about/', about, name='about'),
     path('buscar/', buscar, name='buscador'),
-    path('editar-banda/<int:id>/', editar_banda, name='editar_banda'),
-    path('eliminar-banda/<int:id>/', eliminar_banda, name='eliminar_banda'),
-    # path('mostrar-bandas/<int:id>/', mostrar_bandas, name='mostrar_bandas'),
+    path('editar-banda/', editar_banda, name='editar_banda'),
+    path('eliminar-banda/', eliminar_banda, name='eliminar_banda'),
 ]

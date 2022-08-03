@@ -70,7 +70,7 @@ def buscar(request):
     return render(request, 'bandas/listado_bandas.html', {'respuesta': respuesta})
 
 
-def editar_banda (request, id):
+def editar_banda (request):
   return redirect ('listado_bandas') 
   
     # model=Banda
@@ -79,7 +79,7 @@ def editar_banda (request, id):
     # fields = ['nombre', 'genero', 'anios_activa']
 
 
-def eliminar_banda (request, id):
+def eliminar_banda (request):
   banda = Banda.objects.get(id=id)
   banda.delete()
   return redirect('listado_bandas')
