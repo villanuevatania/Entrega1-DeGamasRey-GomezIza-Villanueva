@@ -97,3 +97,8 @@ def eliminar_banda(request, id):
   banda.delete()
   return redirect('listado_bandas')
 
+def mostrar_banda(request, id):
+  banda = Banda.objects.get(id=id)
+  return render(request, 'bandas/mostrar_banda.html',{'banda':banda})
+
+

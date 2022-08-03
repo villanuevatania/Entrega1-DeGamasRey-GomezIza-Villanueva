@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Banda</title>
+{% endblock title %}
+
+
+<h1>
+    Banda
+</h1>
+
+
+{% block dsp_del_header  %}
+<p>
+    La banda consultada es:
+</p>
+
+<p>
+    <ul>
+        <li>
+            {{banda.nombre}}
+        </li>
+        <li>
+            {{banda.genero}}
+        </li>
+        <li>
+            {{banda.anios_activa}}
+        </li>
+        <a href={% url 'listado_bandas' %}>Volver</a>
+    </ul>
+</p>
+{% endblock dsp_del_header  %}
+
