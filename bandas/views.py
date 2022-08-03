@@ -77,7 +77,7 @@ def editar_banda(request):
     # success_url = '/bandas/banda'
     # fields = ['nombre', 'genero', 'anios_activa']
 
-
+@login_required
 def eliminar_banda(request, id):
   banda = Banda.objects.get(id=id)
   banda.delete()
