@@ -26,8 +26,8 @@
             <li>
                 {{banda}} 
                 El nombre de la banda es {{x.nombre}}, pertenece al palo del {{x.genero}} y esta en actividad desde hace {{x.anios_activa}} años.
-                <a href={% url 'editar_banda' %}>Editar</a>
-                <a href={% url 'eliminar_banda' %}>Eliminar</a>
+                <a href={% url 'editar_banda' x.id %}>Editar</a>
+                <a href={% url 'eliminar_banda' x.id %}>Eliminar</a>
             </li>
         {% endfor %}
     {% elif listado_bandas %}
@@ -35,8 +35,8 @@
             <li>
                 {{banda}} 
                 El nombre de la banda es {{x.nombre}}, pertenece al palo del {{x.genero}} y esta en actividad desde hace {{x.anios_activa}} años. 
-                <a href={% url 'editar_banda' %}>Editar</a>
-                <a href={% url 'eliminar_banda' %}>Eliminar</a>
+                <a href={% url 'editar_banda' x.id %}>Editar</a>
+                <a href={% url 'eliminar_banda' x.id %}>Eliminar</a>
             </li>
             {% endfor %}
     {% else %}

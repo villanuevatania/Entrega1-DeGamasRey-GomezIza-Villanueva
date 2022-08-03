@@ -70,18 +70,16 @@ def buscar(request):
     return render(request, 'bandas/listado_bandas.html', {'respuesta': respuesta})
 
 
-def editar_banda (request):
+def editar_banda(request):
   return redirect ('listado_bandas') 
-  
     # model=Banda
     # template_name = 'bandas/banda.html'
     # success_url = '/bandas/banda'
     # fields = ['nombre', 'genero', 'anios_activa']
 
 
-def eliminar_banda (request):
+def eliminar_banda(request, id):
   banda = Banda.objects.get(id=id)
   banda.delete()
   return redirect('listado_bandas')
 
-# (LoginRequiredMixin, DeleteView):
