@@ -8,6 +8,7 @@ from django.views.generic.list import ListView
 from django.views.generic.edit import DeleteView, UpdateView, CreateView
 from django.views.generic import DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def home(request):
@@ -63,26 +64,24 @@ def buscar(request):
     var = request.GET["buscar"]
     banda = Banda.objects.filter(nombre__icontains = var)
     return render(request, 'bandas/listado_bandas.html', {'banda': banda})
-    # if banda.exists():
-    # else:
-    #   respuesta = 'No existen datos cargados con esa letra.'
-    # return render(request, 'listado_bandas.html', {'respuesta': respuesta})
+
   else:
     respuesta = 'Debe llenar algun campo.'
     return render(request, 'bandas/listado_bandas.html', {'respuesta': respuesta})
-    
-def editar_bandas (LoginRequiredMixin, UpdateView):
-    model=Banda
-    template_name = 'bandas/banda.html'
-    success_url = '/bandas/banda'
-    fields = ['nombre', 'genero', 'anios_activa']
 
 
-def eliminar_bandas(LoginRequiredMixin, DeleteView):
+def editar_banda (request, id):
+  return redirect ('listado_bandas') 
+  
+    # model=Banda
+    # template_name = 'bandas/banda.html'
+    # success_url = '/bandas/banda'
+    # fields = ['nombre', 'genero', 'anios_activa']
+
+
+def eliminar_banda (request, id):
   banda = Banda.objects.get(id=id)
   banda.delete()
   return redirect('listado_bandas')
 
-def mostrar_bandas(request, id):
-  banda = Banda.objects.get(id=id)
-  return render(request, 'bandas/mostrar_bandas.html', {'banda': banda})
+# (LoginRequiredMixin, DeleteView):

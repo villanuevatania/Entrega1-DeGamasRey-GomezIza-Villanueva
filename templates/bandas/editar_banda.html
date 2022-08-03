@@ -18,7 +18,7 @@
 
 <p>
         <h1>Editar bandas:</h1>
-        <form action={% url 'editar_banda' banda.id %} method="post">
+        <form action="{% url 'editar_banda' %}" method="post">
             {% csrf_token %}
             <table>
                 {{form.as_table}}
