@@ -69,13 +69,27 @@ def buscar(request):
     respuesta = 'Debe llenar algun campo.'
     return render(request, 'bandas/listado_bandas.html', {'respuesta': respuesta})
 
-
-def editar_banda(request):
-  return redirect ('listado_bandas') 
-    # model=Banda
-    # template_name = 'bandas/banda.html'
-    # success_url = '/bandas/banda'
-    # fields = ['nombre', 'genero', 'anios_activa']
+@login_required
+def editar_banda(request, id):
+  banda = Banda.objects.get(id=id)
+  
+  if request.method == 'POST':
+    form = FormBanda(request.POST)    
+    if form.is_valid():      
+      banda.nombre = form.cleaned_data.get('nombre')
+      banda.genero = form.cleaned_data.get('genero')
+      banda.anios_activa = form.cleaned_data.get('anios_activa')
+      banda.save()
+      
+      return redirect('listado_bandas')
+    
+    else:
+      return render (request, 'bandas/editar_banda.html',{'form':form,'banda':banda})
+      
+  form_banda = FormBanda(initial = {'nombre': banda.nombre,'genero': banda.genero,'anios_activa': banda.anios_activa})
+  
+  
+  return render(request, 'bandas/editar_banda.html', {'form': form_banda,'banda':banda})
 
 @login_required
 def eliminar_banda(request, id):
