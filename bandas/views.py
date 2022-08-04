@@ -43,14 +43,7 @@ def crear_banda(request):
 
 def listado_bandas(request):
     listado_bandas = Banda.objects.all()
-  
-  # nombre_de_busqueda = request.GET.get('buscador')
-  
-  # if nombre_de_busqueda:
-  #   listado_bandas = Banda.objects.filter(banda__icontains = nombre_de_busqueda)
-  # else:
     
-  
     form = BusquedaBanda()
     return render(request, 'bandas/listado_bandas.html', {'listado_bandas': listado_bandas, 'form':form})
 

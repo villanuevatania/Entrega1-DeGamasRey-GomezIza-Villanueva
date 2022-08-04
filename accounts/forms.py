@@ -8,10 +8,7 @@ class MyUserCreationForm(UserCreationForm):
     email = forms.EmailField()
     password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
     password2 = forms.CharField(label='Repetir Password', widget=forms.PasswordInput)
-    
-    # first_name = forms.CharField(label='Nombre', max_length=30)
-    # last_name = forms.CharField(label='Apellido', max_length=30)
-    
+
 class Meta:
     model = User
     fields = ['username', 'email', 'password1', 'password2']
