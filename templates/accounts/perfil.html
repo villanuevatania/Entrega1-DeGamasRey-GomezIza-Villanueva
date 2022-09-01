@@ -22,6 +22,9 @@
             <img src={{request.user.masdatosusuario.avatar.url}} alt="" height="200px">
             {% endif %}
         </li>
+        {% if request.user.masdatosusuario.description %}
+        <li>Description: {{request.user.masdatosusuario.description}}</li>
+        {% endif %}
     </ul>
     
 </p>
