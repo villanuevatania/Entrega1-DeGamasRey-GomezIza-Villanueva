@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bandas',
     'accounts',
+    'posteo',
 ]
 
 MIDDLEWARE = [

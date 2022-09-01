@@ -35,8 +35,7 @@
                         {% if request.user.is_authenticated %}
                         <li class="nav-item"><a class="nav-link" href={% url 'perfil' %}>
                             {% if request.user.masdatosusuario.avatar %}
-                            <img src={{request.user.masdatosusuario.avatar.url}} alt="" height="30px">
-                            {% endif %}
+                            <img src={{request.user.masdatosusuario.avatar.url}} alt="" height="50px">                            {% endif %}
                             {{request.user.username}}
                         </a></li>
                         <li class="nav-item"><a class="nav-link" href={% url 'logout' %}>Cerrar sesión</a></li>

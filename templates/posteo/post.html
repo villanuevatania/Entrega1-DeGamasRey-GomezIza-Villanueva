@@ -1,0 +1,28 @@
+{% extends 'index.html' %}
+
+{% block title %}
+<title>Perfil</title>
+{% endblock title %}
+
+{% block texto_header %}
+<h1>
+    Perfil usuario {{request.user.username}}
+</h1>
+{% endblock texto_header %}
+
+{% block dsp_del_header %}
+<p>
+    <ul>
+        <li>Contenido: {{contenido}}</li>
+        <li>Autor: {{autor}}</li>
+        <li>Fecha de Creación: {{fecha_creacion}}</li>
+        <li>
+            <p>: </p>
+            {% if request.user.masdatosusuario.avatar %}
+            <img src={{image.url}} alt="" height="200px">
+            {% endif %}
+        </li>
+    </ul>
+    
+</p>
+{% endblock dsp_del_header %}

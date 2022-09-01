@@ -12,13 +12,13 @@ def login(request):
         form = AuthenticationForm(request, data=request.POST)
         
         if form.is_valid():
-            usuario = form.cleaned_data.get('usuario')
-            contraseña = form.cleaned_data.get('contraseña')
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
             
-            usuario = authenticate(usuario=usuario, contraseña=contraseña)
+            user = authenticate(username=username, password=password)
             
-            if usuario is not None:
-                django_login(request, usuario)
+            if user is not None:
+                django_login(request, user)
                 return redirect('home')
             else:
                 return render(request, 'accounts/login.html', {'form': form})
