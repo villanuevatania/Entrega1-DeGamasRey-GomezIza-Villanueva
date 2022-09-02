@@ -47,8 +47,7 @@
         {% endfor %}
     {% elif listado_bandas %}
             {% for x in listado_bandas %}
-            <li>
-                {{banda}} 
+            <li> 
                 El nombre de la banda es {{x.nombre}}, pertenece al palo del {{x.genero}} y esta en actividad desde hace {{x.anios_activa}} años. 
                 <a href={% url 'mostrar_banda' x.id %}>Mostrar</a>
                 <a href={% url 'editar_banda' x.id %}>Editar</a>
