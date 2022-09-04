@@ -11,11 +11,13 @@ class MyUserCreationForm(UserCreationForm):
     password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
     password2 = forms.CharField(label='Repetir Password', widget=forms.PasswordInput)
 
+
 class Meta:
     model = User
     fields = ['username', 'email', 'password1', 'password2', 'first_name', 'last_name']
     help_text = {key: '' for key in fields}
-    
+
+
 class MyUserEditForm(forms.Form):
     
     email = forms.EmailField(required=False)

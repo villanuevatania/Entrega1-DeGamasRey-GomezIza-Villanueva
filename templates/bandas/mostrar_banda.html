@@ -29,13 +29,19 @@
 <p>
     <ul>
         <li>
-            {{banda.nombre}}
+            Nombre: {{banda.nombre}}
         </li>
         <li>
-            {{banda.genero}}
+            Genero: {{banda.genero}}
         </li>
         <li>
-            {{banda.anios_activa}}
+            Fecha de formación: {{banda.fecha_de_formacion}}
+        </li>
+        <li>
+            Reseña: {{banda.critica}}
+        </li>
+        <li>
+            Fecha de creación: {{banda.fecha_del_post}}
         </li>
         <a href={% url 'listado_bandas' %}>Volver</a>
     </ul>

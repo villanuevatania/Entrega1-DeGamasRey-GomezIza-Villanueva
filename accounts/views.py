@@ -2,10 +2,10 @@ from django.shortcuts import redirect, render
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.views import PasswordChangeView
 from django.contrib.auth import authenticate, login as django_login
-
 from accounts.models import MasDatosUsuario
 from .forms import MyUserCreationForm, MyUserEditForm
 from django.contrib.auth.decorators import login_required
+
 
 def login(request):
     if request.method == 'POST':
@@ -30,6 +30,7 @@ def login(request):
     
     return render(request, 'accounts/login.html', {'form': form})
 
+
 def register(request):
     if request.method == 'POST':
         form = MyUserCreationForm(request.POST)
@@ -42,9 +43,11 @@ def register(request):
     form = MyUserCreationForm()
     return render(request, 'accounts/register.html', {'form': form})
 
+
 @login_required
 def perfil(request):
     return render(request, 'accounts/perfil.html')
+
 
 @login_required
 def editar_perfil(request):
@@ -82,6 +85,7 @@ def editar_perfil(request):
     )
         
     return render(request, 'accounts/editar_perfil.html', {'form': form})
+
 
 class ChangePasswordView(PasswordChangeView):
     template_name = 'accounts/cambio_password.html'
