@@ -1,5 +1,4 @@
 from django.urls import path
-from bandas import views
 from .views import home, crear_banda, about, listado_bandas, buscar, editar_banda, eliminar_banda, mostrar_banda
 
 urlpatterns = [

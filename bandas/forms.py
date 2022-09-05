@@ -8,10 +8,8 @@ class FormBanda(forms.Form):
     genero = forms.CharField(max_length=30)
     fecha_de_formacion = forms.IntegerField(required=False)
     critica = RichTextFormField( required=False)
-    post = forms.ImageField(required=False)
+    publicacion = forms.ImageField(required=False)
     fecha_del_post = models.DateField(null=True)
-    class Meta:
-        model = Banda
-        fields = ['nombre', 'genero', 'fecha_de_formacion', 'critica', 'post']
+
 class BusquedaBanda (forms.Form):
     nombre = forms.CharField(max_length=30, required=False)

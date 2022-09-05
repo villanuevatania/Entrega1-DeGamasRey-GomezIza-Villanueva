@@ -4,7 +4,7 @@ from django.template import loader
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from .forms import BusquedaBanda, FormBanda
-from .models import Banda, Imagen
+from .models import Banda, MasDatosPosteo
 from django.views.generic.list import ListView
 from django.views.generic.edit import DeleteView, UpdateView, CreateView
 from django.views.generic import DetailView
@@ -22,6 +22,7 @@ def crear_banda(request):
   if request.method == 'POST':
     form = FormBanda(request.POST, request.FILES)
     
+    
     if form.is_valid():
       data = form.cleaned_data
       banda = Banda(
@@ -30,6 +31,7 @@ def crear_banda(request):
         fecha_de_formacion=data.get('fecha_de_formacion'),
         critica=data.get('critica'),
         fecha_del_post = datetime.datetime.now(),
+        
       )
       banda.save()
       
@@ -89,7 +91,7 @@ def buscar(request):
 @login_required
 def editar_banda(request, id):
   banda = Banda.objects.get(id=id)
-
+  mas_datos_posteo = MasDatosPosteo(banda=banda)
   
   if request.method == 'POST':
     form = FormBanda(request.POST, request.FILES)    
@@ -98,6 +100,9 @@ def editar_banda(request, id):
       banda.genero = form.cleaned_data.get('genero')
       banda.fecha_de_formacion = form.cleaned_data.get('fecha_de_formacion')
       banda.critica= form.cleaned_data.get('critica')
+      mas_datos_posteo.publicacion = form.cleaned_data.get('publicacion') if form.cleaned_data.get ('publicacion') else mas_datos_posteo.publicacion
+      
+      mas_datos_posteo.save()
       banda.save()
       
       return redirect('listado_bandas')
@@ -105,7 +110,15 @@ def editar_banda(request, id):
     else:
       return render (request, 'bandas/editar_banda.html',{'form':form,'banda':banda})
       
-  form_banda = FormBanda(initial = {'nombre': banda.nombre,'genero': banda.genero,'fecha_de_formacion': banda.fecha_de_formacion,'critica': banda.critica})
+  form_banda = FormBanda(
+    initial = {
+      'nombre': banda.nombre,
+      'genero': banda.genero,
+      'fecha_de_formacion': banda.fecha_de_formacion,
+      'critica': banda.critica,
+      'publicacion': mas_datos_posteo.publicacion
+      }
+    )
   
   
   return render(request, 'bandas/editar_banda.html', {'form': form_banda,'banda':banda})
@@ -126,4 +139,3 @@ def mostrar_banda(request, id):
 
 def home_view(request):
     return render_to_response('base.html')
-
