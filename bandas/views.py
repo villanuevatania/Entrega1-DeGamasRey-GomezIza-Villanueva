@@ -4,7 +4,7 @@ from django.template import loader
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from .forms import BusquedaBanda, FormBanda
-from .models import Banda
+from .models import Banda, Imagen
 from django.views.generic.list import ListView
 from django.views.generic.edit import DeleteView, UpdateView, CreateView
 from django.views.generic import DetailView
@@ -20,17 +20,15 @@ def home(request):
 def crear_banda(request):
   
   if request.method == 'POST':
-    form = FormBanda(request.POST)
+    form = FormBanda(request.POST, request.FILES)
     
     if form.is_valid():
       data = form.cleaned_data
-      
       banda = Banda(
         nombre=data.get('nombre'),
         genero=data.get('genero'),
         fecha_de_formacion=data.get('fecha_de_formacion'),
         critica=data.get('critica'),
-        imagen = data.get('imagen'),
         fecha_del_post = datetime.datetime.now(),
       )
       banda.save()
@@ -91,9 +89,10 @@ def buscar(request):
 @login_required
 def editar_banda(request, id):
   banda = Banda.objects.get(id=id)
+
   
   if request.method == 'POST':
-    form = FormBanda(request.POST)    
+    form = FormBanda(request.POST, request.FILES)    
     if form.is_valid():      
       banda.nombre = form.cleaned_data.get('nombre')
       banda.genero = form.cleaned_data.get('genero')
@@ -121,19 +120,8 @@ def eliminar_banda(request, id):
 
 def mostrar_banda(request, id):
   banda = Banda.objects.get(id=id)
+  
   return render(request, 'bandas/mostrar_banda.html',{'banda':banda})
-
-# @login_required
-# def subir_imagen (request):
-#     if request.method == 'POST':
-#         form = UploadImageForm(request.POST, request.FILES)
-#         if form.is_valid():
-#             form.save()
-#             mensaje = "El posteo se creo con éxito!"
-#     else:
-#         form = UploadImageForm()
-
-#     return render_to_response('bandas/upload.html', locals(), context_instance=RequestContext(request))
 
 
 def home_view(request):

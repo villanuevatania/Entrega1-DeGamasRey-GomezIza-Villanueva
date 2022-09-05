@@ -27,18 +27,15 @@
 
 
 <p>
-        <h1>Creación de bandas:</h1>
-        <form action="{% url 'crear_banda' %}" method="post">
-            {% csrf_token %}
-            <table>
-                {{form.as_table}}
-            </table>
-            <button>Crear</button>
-        </form>
-        <a href={% url 'listado_bandas' %}>Volver</a>
-    </p>
+    <h1>Creación de bandas:</h1>
+    <form action="{% url 'crear_banda' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table>
+            {{form.as_table}}
+        </table>
+        <button>Crear</button>
+    </form>
+    <a href={% url 'listado_bandas' %}>Volver</a>
+</p>
 
-            
-            
-    
 {% endblock dsp_del_header %}
