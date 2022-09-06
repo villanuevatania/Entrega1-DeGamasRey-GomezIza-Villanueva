@@ -38,7 +38,7 @@
     <ul>
         {% for x in banda %}
                 {{banda}} 
-                {{x.nombre}}.
+                {{x.nombre}} 
                 <a href={% url 'mostrar_banda' x.id %}>Mostrar</a>
                 <a href={% url 'editar_banda' x.id %}>Editar</a>
                 <a href={% url 'eliminar_banda' x.id %}>Eliminar</a>

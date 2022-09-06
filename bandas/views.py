@@ -116,7 +116,7 @@ def editar_banda(request, id):
       'genero': banda.genero,
       'fecha_de_formacion': banda.fecha_de_formacion,
       'critica': banda.critica,
-      'publicacion': mas_datos_posteo.publicacion
+      'publicacion': mas_datos_posteo.publicacion,
       }
     )
   
