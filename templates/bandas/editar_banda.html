@@ -1,23 +1,24 @@
 {% extends 'base.html' %}
 
-{% block title %}
-<title>Editar banda</title>
-{% endblock title %}
-
-
-{% block texto_header %}
-<h1>
-    Editar banda
-</h1>
-{% endblock texto_header %}
-{% block texto_2 %}
-{% endblock texto_2 %}
+{% block header %}
+<header class="masthead">
+    <div class="container">
+        <div class="masthead-subheading">
+        </div>
+        <div class="masthead-heading text-uppercase">
+            <h1>
+            Edita y actualiza la data de {{banda.nombre}}
+            </h1>
+        </div>
+            </div>
+</header>
+{% endblock header %}
 
 {% block dsp_del_header %}
 
 
 <p>
-        <h1>Editar bandas:</h1>
+        <h1>Información:</h1>
         <form action= "{% url 'editar_banda' banda.id %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{form.media}}

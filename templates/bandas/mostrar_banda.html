@@ -12,8 +12,7 @@
         </div>
         <div class="masthead-heading text-uppercase">
             <h1>
-            Hola! veo que te interesa esta banda.
-            Para editar y eliminar bandas inicia sesión, create un usuario! 
+                La banda consultada es {{banda.nombre}}
             </h1>
         </div>
             </div>
@@ -23,24 +22,24 @@
 
 {% block dsp_del_header  %}
 <p>
-    La banda consultada es:
+    <h1> {{banda.nombre}} </h1>
 </p>
 
 <p>
     <ul>
-        <p><h1>{{banda.nombre}} </h1></p>
+        
         <img src={{request.banda.masdatosposteo.posteo.url.url}} alt="" height="50px">    
+        <h3>
+        Genero: {{banda.genero}}
+        <br> 
+        </h3>
+        Fecha de formación: {{banda.fecha_de_formacion}}
+        <br>
+        <br>
+        Reseña: {{banda.critica | safe }}
+        <br>
         <li>
-            Genero: {{banda.genero}}
-        </li>
-        <li>
-            Fecha de formación: {{banda.fecha_de_formacion}}
-        </li>
-        <li>
-            Reseña: {{banda.critica | safe }}
-        </li>
-        <li>
-            Fecha de creación: {{banda.fecha_del_post}}
+        Fecha de creación: {{banda.fecha_del_post}}
         </li>
         <a href={% url 'listado_bandas' %}>Volver</a>
     </ul>
