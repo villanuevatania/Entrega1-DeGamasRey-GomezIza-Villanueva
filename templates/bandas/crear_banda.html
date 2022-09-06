@@ -30,6 +30,7 @@
     <h1>Creación de bandas:</h1>
     <form action="{% url 'crear_banda' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
+        {{form.media}}
         <table>
             {{form.as_table}}
         </table>

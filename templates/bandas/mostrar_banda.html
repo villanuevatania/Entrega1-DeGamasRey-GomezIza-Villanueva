@@ -29,18 +29,13 @@
 <p>
     <ul>
         <p><h1>{{banda.nombre}} </h1></p>
-        {% comment %} {% if request.posteos.imagen %}
-        <img src={{request.posteos.imagen}} alt="" height="200px"> {% endcomment %}
-        {% comment %} {% endif %}        <li> {% endcomment %}
-            {% comment %} Nombre: {{banda.nombre}}
-        </li> {% endcomment %}
+        <img src={{request.banda.masdatosposteo.posteo.url.url}} alt="" height="50px">    
         <li>
             Genero: {{banda.genero}}
         </li>
         <li>
             Fecha de formación: {{banda.fecha_de_formacion}}
         </li>
-        <img src ={{request.banda.masdatosposteo.posteo.url}} alt = "height="200px " >
         <li>
             Reseña: {{banda.critica}}
         </li>

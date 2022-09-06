@@ -4,7 +4,7 @@ class Banda(models.Model):
     nombre = models.CharField(max_length=250)
     genero = models.CharField(max_length=250)
     fecha_de_formacion = models.IntegerField()
-    critica= RichTextField(null = True)
+    critica= RichTextField()
     fecha_del_post = models.DateField(null=True)    
     
 def __str__ (self):
