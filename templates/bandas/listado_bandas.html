@@ -19,43 +19,38 @@
 <title>Listado bandas</title>
 {% endblock title %}
 
+
 {% block dsp_del_header %}
 
-<h1>
+<h1 class="text-center">
     Listado de bandas:
 </h1>
 
-<hr>
-
-    <div>
-        <form action="/bandas/buscar/" method= "GET">
-            <input type="text" name = "buscar">
-            <input type="submit" value="Buscar">
-        </form>
-    </div>
 <div>
-    {% if banda %}
-    <ul>
-        {% for x in banda %}
-                {{banda}} 
-                {{x.nombre}} 
-                <a href={% url 'mostrar_banda' x.id %}>Mostrar</a>
-                <a href={% url 'editar_banda' x.id %}>Editar</a>
-                <a href={% url 'eliminar_banda' x.id %}>Eliminar</a>
-        {% endfor %}
-    </ul>
-    {% elif listado_bandas %}
-            {% for x in listado_bandas %}
-            <li> 
-                {{x.nombre}}.
-                <a href={% url 'mostrar_banda' x.id %}>Mostrar</a>
-                <a href={% url 'editar_banda' x.id %}>Editar</a>
-                <a href={% url 'eliminar_banda' x.id %}>Eliminar</a>
-            </li>
-            {% endfor %}
-    {% else %}
-    {{respuesta}}
-    {% endif %}
+    <form action={% url 'listado_bandas' %} method= "GET">
+            {{form}}
+            <button>Buscar</button>
+    </form>
 </div>
 
+<div class="row my-4 text-center">
+    {% if listado_bandas %}
+            {% for form in listado_bandas %}
+            <div class="col-md-4 p-4">
+                <div class="card">
+                    <div class="review-item">
+                        <h2 >{{form.nombre }}</h2>
+                        <a href={% url 'mostrar_banda' form.id %}>Mostrar</a>
+                        <a href={% url 'editar_banda' form.id %}>Editar</a>
+                        <a href={% url 'eliminar_banda' form.id %}>Eliminar</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+    {% else %}
+            <h3>
+                No se encontraron post
+            </h3>
+    {% endif %}
+</div>
 {% endblock dsp_del_header %}

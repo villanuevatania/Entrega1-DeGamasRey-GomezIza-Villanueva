@@ -27,14 +27,13 @@
 
 <p>
     <ul>
-        
-        <img src={{banda.banda.publicacion.url}} alt="" height="500px">    
+        <img src={{banda.publicacion.url}} alt="" height="500px"> 
         <h3>
         Genero: {{banda.genero}}
         <br> 
         </h3>
-        Fecha de formación: {{banda.fecha_de_formacion}}
         <br>
+        fecha de creación: {{banda.fecha_creacion}}
         <br>
         Reseña: {{banda.critica | safe }}
         <br>
@@ -45,4 +44,3 @@
     </ul>
 </p>
 {% endblock dsp_del_header  %}
-
