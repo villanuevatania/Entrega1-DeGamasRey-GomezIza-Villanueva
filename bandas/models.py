@@ -11,5 +11,5 @@ def __str__ (self):
         return f'El nombre del artista es {self.nombre}, pertenece al palo del {self.genero} y está en actividad desde hace {self.fecha_de_formacion} años'
 
 class MasDatosPosteo(models.Model):
-    banda = models.OneToOneField(Banda, on_delete=models.CASCADE)
+    banda = models.OneToOneField(Banda, on_delete=models.CASCADE, related_name='banda')
     publicacion = models.ImageField(upload_to= 'posteos', null = True, blank = True)
